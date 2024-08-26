@@ -1,0 +1,13 @@
+---
+interface Props {
+	className: string;
+}
+
+import Banner from "../../Banner.astro";
+const { className } = Astro.props;
+
+
+---
+	<div class="max-lg:w-full min-h-[720px] flex flex-wrap justify-between">
+		<Banner />
+	</div>	

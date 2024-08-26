@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/roboto-regular.woff2) format("woff2");
+  }
+}
+
+@layer components {
+  .nav__container {
+    @apply bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900;
+  }
+  .nav__content {
+    @apply flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4;
+  }
+  .nav__logo {
+    @apply flex items-center space-x-3 rtl:space-x-reverse;
+  }
+  .nav__text-logo {
+    @apply self-center text-2xl font-semibold whitespace-nowrap dark:text-white;
+  }
+  .nav__button {
+    @apply inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600;
+  }
+  .nav__mega-menu-image {
+    @apply items-center justify-between w-full md:flex md:w-auto md:order-1;
+  }
+  .nav__menu-image-dropdown {
+    @apply mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600;
+  }
+  .nav__block-menu {
+    @apply grid max-w-screen-xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6;
+  }
+  .nav__dropdown-menu-item {
+    @apply mb-4 space-y-4 md:mb-0 md:block;
+  }
+  .nav_menu-item {
+    @apply hover:underline hover:text-blue-600 dark:hover:text-blue-500;
+  }
+
+  .block__header {
+    @apply w-full py-8 px-4 mx-auto lg:py-16 bg-slate-400;
+  }
+  .div__header {
+    @apply mx-auto text-center mb-8 lg:mb-16;
+  }
+  .title__header {
+    @apply mb-4 text-5xl -tracking-tight font-extrabold text-slate-700;
+  }
+}

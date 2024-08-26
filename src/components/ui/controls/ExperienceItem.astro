@@ -1,0 +1,66 @@
+---
+// ExperienceItem.astro
+export interface Period {
+  start: string;  // La fecha de inicio del periodo
+  end: string;    // La fecha de fin del periodo
+  time:string;
+}
+
+export interface Props {
+  company: string;
+  period: Period;
+  position: string;
+  activities: string[];
+  active: boolean;
+}
+
+const { company, period, position, activities, active } = Astro.props;
+
+---
+<div class="w-full mx-auto flex flex-wrap justify-between items-start pt-5 hover:scale-95 transition-all">
+  <div class="w-7/12 px-4">
+    <div class="w-full grid grid-cols-12 text-sm">
+      <div class="col-span-4 text-left">
+        <p class="font-bold w-full text-sm mb-1">{company}</p>
+        <div class="flex justify-start gap-x-4">
+          <span class="capitalize text-xs">{period.start}</span>
+          <span class="text-center">-</span>
+          <span class="capitalize text-xs">{period.end}</span>            
+        </div>
+        <div class="flex justify-start">
+           <span class="capitalize text-xs">{period.time}</span>
+        </div>
+      </div>
+      <div class="col-span-1 px-2 flex justify-center items-start">
+        <div class="mb-4 -mr-1.5">
+          <span class="relative flex h-3 w-3 justify-center items-center">
+            <span 
+              class:list={[
+                "absolute inline-flex h-full w-full rounded-full border border-sky-400 opacity-75",
+                {
+                  "animate-ping bg-sky-500":active,
+                  "bg-white" : !active
+                }
+              ]}
+            ></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 border-2 border-sky-400 outline-sky-500"></span>
+          </span>
+        </div>
+        <div class="mt-3 border-l h-full border-slate-300"></div>
+      </div>
+      <div class="col-span-7 px-4">
+        <div class="inline-flex flex-col gap-1">
+          <span class="text-md font-bold text-slate-700">Puesto</span>
+          <span class="text-md">{position}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-5/12 px-4">
+    <div class="flex flex-col justify-between items-start">
+      {activities.map((activity) => (
+        <span class="text-xs py-0.5 font-semibold capitalize">{activity}</span>
+      ))}
+    </div>
+  </div>
+</div>

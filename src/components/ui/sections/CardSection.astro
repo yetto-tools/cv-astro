@@ -1,0 +1,20 @@
+---
+import Card from "../controls/Card.astro";
+
+
+const items = [
+  {title:"Ecommerce", description:"Pellentesque pellentesque, ipsum sit amet auctor accumsan, odio tortor bibendum massa, sit amet ultricies ex lectus scelerisque nibh. Ut non sodales.", icon:"store"},
+  {title:"Copywriting", description:"Pellentesque pellentesque, ipsum sit amet auctor accumsan, odio tortor bibendum massa, sit amet ultricies ex lectus scelerisque nibh. Ut non sodales.", icon:"desktop"},
+  {title:"Web Design", description:"Pellentesque pellentesque, ipsum sit amet auctor accumsan, odio tortor bibendum massa, sit amet ultricies ex lectus scelerisque nibh. Ut non sodales.", icon:"devices"},
+  {title:"Management", description:"Pellentesque pellentesque, ipsum sit amet auctor accumsan, odio tortor bibendum massa, sit amet ultricies ex lectus scelerisque nibh. Ut non sodales.", icon:"web"}
+];
+---
+
+<div class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-4 h-96 overflow-y-auto tracking-tight">
+  {
+    items.map((item) => (
+        <Card item={item} />
+    ))
+  }
+
+</div>

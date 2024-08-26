@@ -1,0 +1,39 @@
+---
+import 'tippy.js/dist/tippy.css'; // Importar los estilos de Tippy.js
+
+export interface Props {
+  content: string; // El contenido del tooltip.
+  placement?: 'top' | 'right' | 'bottom' | 'left'; // La posición del tooltip.
+}
+
+const { content, placement = 'top' } = Astro.props;
+---
+
+<div class="tooltip-wrapper inline-block" data-tooltip-content={content} data-tooltip-placement={placement}>
+  <!-- Elemento al que se aplica el tooltip -->
+  <span class="tooltip-target">
+    <slot /> <!-- Utilizamos el slot para recibir cualquier contenido -->
+  </span>
+</div>
+
+<script>
+  // @ts-ignore
+  import tippy from 'tippy.js';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const tooltipWrappers = document.querySelectorAll('.tooltip-wrapper');
+
+    tooltipWrappers.forEach(wrapper => {
+      const content = wrapper.getAttribute('data-tooltip-content');
+      const placement = wrapper.getAttribute('data-tooltip-placement') || 'top';
+
+      // Inicializa Tippy.js para cada wrapper
+      tippy(wrapper.querySelector('.tooltip-target'), {
+        content: content,
+        placement: placement,
+        arrow: true,
+        animation: 'fade',
+      });
+    });
+  });
+</script>

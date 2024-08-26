@@ -1,0 +1,88 @@
+---
+// ExperienceContainer.astro
+import { Image } from 'astro:assets';
+import ExperienceTitle from '../controls/ExperienceTitle.astro';
+import ExperienceItem from '../controls/ExperienceItem.astro';
+import IconCompany from '/public/icon-company.svg'
+import IconActivity from '/public/icon-activity.svg'
+
+
+function convertirFecha(
+  fecha: Date, 
+  localizacion: string = 'es-ES', 
+  opciones: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' }
+): string {
+  // Crear una fecha en UTC
+  const fechaUtc = new Date(Date.UTC(fecha.getUTCFullYear(), fecha.getUTCMonth(), fecha.getUTCDate()));
+
+  // Utilizamos `toLocaleDateString` para formatear la fecha sin problemas de zona horaria
+  return fechaUtc.toLocaleDateString(localizacion, opciones);
+}
+
+function getLapse(startDate:Date, endDate:Date) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+
+  // Si los meses son negativos, restar un año y sumar 12 meses
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  return  `${years} años, ${months} meses`;
+}
+
+const experiences = [
+  {
+    company: 'Grupo Disresa',
+    period: {start: convertirFecha(new Date('2023-03-02')) , end: convertirFecha(new Date()), time:getLapse(new Date('2023-03-02'),new Date())},
+    position: 'Web Master',
+    activities: ['Desarrollo de Ecommerce', 'Aplicaciones Web'],
+    active: true
+  },
+  {
+    company: 'Grupo Americana',
+    period: {start: convertirFecha(new Date('2020-10-02')) , end: convertirFecha(new Date('2023-03-01')), time:getLapse(new Date('2020-10-02'),new Date('2023-03-01'))},
+    position: 'Soporte Tecnico',
+    activities: ['Deploy de Aplicaciones', 'Administracion de Servidores (Windows(2012,2016), linux(Zential)'],
+    active: false
+  },
+  {
+    company: '3Digital, S.A.',
+    period: {start: convertirFecha(new Date('2018-10-02')) , end: convertirFecha(new Date('2019-09-11')), time:getLapse(new Date('2018-10-02'),new Date('2019-10-02'))},
+    position: 'Desarrollo / IT Soporte',
+    activities: ['Deploy Docker Container', 'Clound AWS, EC2, S3'],
+    active: false
+  },
+  // Puedes añadir más experiencias aquí
+];
+
+
+const icons = [
+  {src: IconCompany, alt: "Icon Company", w: 24, h: 24},
+  {src: IconActivity, alt: "Icon Activity", w: 24, h:24},
+];
+
+---
+<div class="w-full max-lg:w-full max-lg:min-h-[720px]">
+  <ExperienceTitle />
+  <div class="w-11/12 mx-auto flex flex-wrap justify-between items-start pt-4 ">
+    <div class="w-7/12 px-4 mb-4 pb-2 border-b">
+      <div class="inline-flex gap-x-4">
+        <Image src={icons[0].src} format="svg" alt={icons[0].alt} loading="lazy" width={icons[0].w} height={icons[0].h} />
+        <span class="font-semibold capitalize">Empresa</span>
+      </div>
+    </div>
+    <div class="w-5/12 px-4 mb-4 pb-2 border-b ">
+      <div class="inline-flex gap-x-4 w-full">
+        <Image src={icons[1].src} format="svg" alt={icons[1].alt} loading="lazy" width={icons[1].w} height={icons[1].h} />
+        <span class="font-semibold capitalize">Actividad principal</span>
+      </div>
+    </div>
+    {experiences.map((experience) => (
+      <ExperienceItem {...experience} />
+    ))}
+  </div>
+</div>
