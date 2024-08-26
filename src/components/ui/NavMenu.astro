@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import TooltipWrapper from "./controls/TooltipWrapper.astro";
+import IconHome from '../../assets/icon-home.svg'
+import IconProfile from '../../assets/icon-account.svg'
+import IconExperience from '../../assets/icon-experience.svg'
 ---
 
 <div class="bg-white w-full rounded-t-md border border-b-sky-200">	
@@ -10,7 +13,7 @@ import TooltipWrapper from "./controls/TooltipWrapper.astro";
 						<div class="w-full text-center px-4 py-2.5 inline-flex justify-center items-center hover:bg-sky-500 hover:text-white active:scale-95 transition-all cursor-pointer">
 							<TooltipWrapper content={"Inicio"} placement="right"> 
               <div class="inline-flex justify-center items-center gap-4">
-								<Image src={'/public/icon-home.svg'} format="svg" alt={'icon home'} loading="lazy" width={24} height={24} />
+								<Image src={IconHome} format="svg" alt={'icon home'} loading="lazy" width={24} height={24} />
                 <span class="font-semibold">Inicio</span>
               </div>
 							</TooltipWrapper>
@@ -21,7 +24,7 @@ import TooltipWrapper from "./controls/TooltipWrapper.astro";
 						<div class="w-full text-center px-4 py-2.5 inline-flex justify-center items-center hover:bg-sky-500 hover:text-white active:scale-95 transition-all cursor-pointer">
 							<TooltipWrapper content={"Inicio"} placement="right"> 
               <div class="inline-flex justify-center items-center gap-4">
-								<Image src={'/public/icon-account.svg'} format="svg" alt={'icon account'} loading="lazy" width={24} height={24} />
+								<Image src={IconProfile} format="svg" alt={'icon account'} loading="lazy" width={24} height={24} />
                 <span class="font-semibold">Perfil</span>
               </div>
                 
@@ -34,7 +37,7 @@ import TooltipWrapper from "./controls/TooltipWrapper.astro";
 						<div class="w-full text-center px-4 py-2.5 inline-flex justify-center items-center hover:bg-sky-500 hover:text-white active:scale-95 transition-all cursor-pointer">
 							<TooltipWrapper content={"Inicio"} placement="right"> 
               <div class="inline-flex justify-center items-center gap-4">
-								<Image src={'/public/icon-experience.svg'} format="svg" alt={'icon account'} loading="lazy" width={24} height={24} />
+								<Image src={IconExperience} format="svg" alt={'icon account'} loading="lazy" width={24} height={24} />
                 <span class="font-semibold">Experiencia</span>
               </div>
 							</TooltipWrapper>

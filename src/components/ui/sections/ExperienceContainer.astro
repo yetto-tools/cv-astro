@@ -3,8 +3,8 @@
 import { Image } from 'astro:assets';
 import ExperienceTitle from '../controls/ExperienceTitle.astro';
 import ExperienceItem from '../controls/ExperienceItem.astro';
-import IconCompany from '/public/icon-company.svg'
-import IconActivity from '/public/icon-activity.svg'
+import IconCompany from '../../../assets/icon-company.svg'
+import IconActivity from '../../../assets/icon-activity.svg'
 
 
 function convertirFecha(
@@ -71,13 +71,13 @@ const icons = [
   <div class="w-11/12 mx-auto flex flex-wrap justify-between items-start pt-4 ">
     <div class="w-7/12 px-4 mb-4 pb-2 border-b">
       <div class="inline-flex gap-x-4">
-        <Image src={icons[0].src} format="svg" alt={icons[0].alt} loading="lazy" width={icons[0].w} height={icons[0].h} />
+        <Image src={IconCompany} format="svg" alt={'icon-company'} loading="lazy" width={24} height={24} />
         <span class="font-semibold capitalize">Empresa</span>
       </div>
     </div>
     <div class="w-5/12 px-4 mb-4 pb-2 border-b ">
       <div class="inline-flex gap-x-4 w-full">
-        <Image src={icons[1].src} format="svg" alt={icons[1].alt} loading="lazy" width={icons[1].w} height={icons[1].h} />
+        <Image src={IconActivity} format="svg" alt={'icon-activity'} loading="lazy" width={24} height={24} />
         <span class="font-semibold capitalize">Actividad principal</span>
       </div>
     </div>
